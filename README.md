@@ -1,6 +1,6 @@
 # ddr_ext_public
 
-This repository provides VS Code extensions for download and installation.
+This repository provides VS Code extensions and executables for download and installation.
 
 ## Installing VS Code Extensions
 
@@ -119,7 +119,7 @@ After installation, verify the extension is installed:
 ### Extension Not Showing Up
 - Restart VS Code after installation
 - Check if the extension requires a specific VS Code version
-- Look at the Output panel (`View > Output`) and select "Extensions" from the dropdown
+- Look at the Output panel (`View → Output`) and select "Extensions" from the dropdown
 
 ### Installation Fails
 - Check your internet connection (for marketplace installations)
