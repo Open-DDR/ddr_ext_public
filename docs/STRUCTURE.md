@@ -122,7 +122,7 @@ ddr_ext_public/
 ### 🤝 For Contributors
 - Clear contribution guidelines
 - Issue templates
-- Code of conduct
+- Code of conduct (in CONTRIBUTING.md)
 - Recognition system
 
 ## Getting Help
