@@ -1,0 +1,62 @@
+name: Package and Release Extension
+
+# This is a sample workflow for packaging VS Code extensions
+# Rename to release.yml and customize according to your needs
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # Triggers on version tags like v1.0.0
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./extension  # Adjust path to your extension source
+      
+      - name: Run tests
+        run: npm test
+        working-directory: ./extension
+      
+      - name: Install vsce
+        run: npm install -g @vscode/vsce
+      
+      - name: Package extension
+        run: vsce package
+        working-directory: ./extension
+      
+      - name: Copy VSIX to releases folder
+        run: |
+          mkdir -p releases
+          cp extension/*.vsix releases/
+      
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: releases/*.vsix
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Commit VSIX to repository
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add releases/*.vsix
+          git commit -m "Add release ${{ github.ref_name }}"
+          git push

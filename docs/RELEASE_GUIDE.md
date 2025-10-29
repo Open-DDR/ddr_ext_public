@@ -251,7 +251,14 @@ vsce ls
 
 ### Using GitHub Actions
 
-Create `.github/workflows/release.yml`:
+A sample workflow is provided at `.github/workflows/release.yml.example`. 
+
+To use it:
+1. Copy `release.yml.example` to `release.yml`
+2. Customize paths and settings for your extension
+3. Commit the workflow file
+
+Or create a custom `.github/workflows/release.yml`:
 
 ```yaml
 name: Release Extension
