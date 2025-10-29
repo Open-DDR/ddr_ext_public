@@ -58,6 +58,8 @@ After installation, verify the extension is active:
 For detailed documentation, see the [docs](docs/) folder:
 - [Installation Guide](docs/INSTALLATION.md) - Detailed installation instructions
 - [Troubleshooting](docs/TROUBLESHOOTING.md) - Common issues and solutions
+- [Quick Reference](docs/QUICK_REFERENCE.md) - Quick commands and shortcuts
+- [Repository Structure](docs/STRUCTURE.md) - Overview of repository layout
 
 ## 🆘 Support
 
